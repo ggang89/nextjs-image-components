@@ -20,6 +20,26 @@ export default function Home() {
 
       <h2 className="text-center text-2xl">내부 폴더 이미지 불러오기</h2>
       <Image src={vercel} alt="Vercel Logo" width={400} height={200} />
+
+      {/* 외부에서 불러오는 이미지는 사이즈 모를 경우 */}
+      {/* 이미지에 fill 속성 지정하고, div로 감싸서 style에 크기 지정해주면 오류 안남. */}
+      <div
+        style={{
+          position: "relative",
+          width: 200,
+          height: 150,
+        }}
+      >
+        <Image
+          src="https://placehold.co/800x600/png"
+          alt="random "
+          fill
+          style={{
+            // 비율 모를 경우, 어느 정도 보정됨
+            objectFit: "contain",
+          }}
+        />
+      </div>
     </div>
   );
 }
